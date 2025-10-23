@@ -1,118 +1,234 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const testimonials = [
   {
-    name: "Bushra C",
+    name: "Sarah T., Brooklyn, NY",
     role: "Patient",
     feedback:
-      "Amazing doctor and phenomenal service. Dr. Gulam Khan and staff are very warm and welcoming. Thank you for serving Dr. Khan.",
-    rating: 5,
+      "The team at Clerisy Medical PC is truly exceptional. From the moment I walked in, I felt heard, cared for, and supported. Highly recommend!",
+    rating: "4.9",
+    avatar: "/testimonials1.jpg",
   },
   {
-    name: "Sharif H.",
+    name: "James R., Queens, NY",
     role: "Patient",
     feedback:
-      "Mr. Khan is a very nice person & knows pretty well how to take care of his patient. Staff are really great too! Thanks.",
-    rating: 5,
+      "Clerisy Medical PC has been a lifesaver. The staff is always kind, professional, and attentive.",
+    rating: "4.9",
+    avatar: "/testimonials2.jpg",
   },
   {
-    name: "Ajmal K.",
+    name: "Michael D., Staten, NY",
     role: "Patient",
     feedback:
-      "Khan is very professional, treating patients with humility and kindness — not only treated well but even educated his patient.",
-    rating: 5,
+      "From the front desk to the exam room, everyone is friendly and professional.",
+    rating: "4.9",
+    avatar: "/testimonials4.png",
+  },
+  {
+    name: "Linda K., Manhattan, NY",
+    role: "Patient",
+    feedback:
+      "Booking appointments is simple, and I love how organized everything is.",
+    rating: "4.9",
+    avatar: "/testimonials3.jpg",
+  },
+  {
+    name: "Maria G., Bronx, NY",
+    role: "Patient",
+    feedback:
+      "I've been coming here for over a year, and the consistency in care is unmatched.",
+    rating: "4.9",
+    avatar: "/testimonials5.png",
   },
 ];
 
 const TestimonialsSection = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [startIndex, setStartIndex] = useState(0);
+  const visibleCount = 3;
 
-  const nextSlide = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1
-    );
+  useEffect(() => {
+    AOS.init({
+      duration: 800,
+      once: true,
+      offset: 100
+    });
+  }, []);
+
+  const handleNext = () => {
+    if (startIndex + visibleCount < testimonials.length) {
+      setStartIndex(startIndex + 1);
+    }
   };
 
-  const prevSlide = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? testimonials.length - 1 : prevIndex - 1
-    );
+  const handlePrev = () => {
+    if (startIndex > 0) {
+      setStartIndex(startIndex - 1);
+    }
   };
+
+  const visibleTestimonials = testimonials.slice(
+    startIndex,
+    startIndex + visibleCount
+  );
 
   return (
-    <section className="relative bg-white py-16 px-4 sm:px-6 lg:px-12 xl:px-24 overflow-hidden">
-      <div className="max-w-7xl mx-auto">
-        {/* Section Heading */}
-        <div className="text-center max-w-3xl mx-auto mb-12">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1a2653] mb-4 leading-tight">
-            We Value the trust our patients place in us.
-          </h2>
-          <p className="text-gray-600 text-base sm:text-lg md:text-xl">
-            Every patient's experience matters to us. Hear from those who have
-            entrusted Clerisy Medical PC with their care and discover how we’re
-            making a difference in their health journeys.
-          </p>
+    <section className="relative bg-white py-14 px-4 sm:px-6 md:px-16 overflow-hidden">
+      <div className="flex flex-col md:flex-row items-start">
+        {/* Left Image */}
+        <div 
+          data-aos="fade-right"
+          data-aos-delay="200"
+          data-aos-duration="800"
+          className="w-full md:w-[40%] relative"
+        >
+          <img
+            src="/Testimonials.png"
+            alt="Doctor"
+            className="rounded-2xl w-full object-cover  "
+          />
+
+          {/* Small Overlay - Background Removed */}
+          <div 
+            data-aos="fade-up"
+            data-aos-delay="400"
+            data-aos-duration="600"
+            className="absolute bottom-3 left-3 bg-transparent px-3 py-2 flex items-center gap-2"
+          >
+            <div className="flex -space-x-2">
+              <img
+                src="/image1.png"
+                alt="Patient"
+                className="w-8 h-8 rounded-full border-2 border-white"
+              />
+              <img
+                src="/image2.png"
+                alt="Patient"
+                className="w-6 h-6 rounded-full border-2 border-white"
+              />
+              <img
+                src="/image3.png"
+                alt="Patient"
+                className="w-6 h-6 rounded-full border-2 border-white"
+              />
+            </div>
+            <div className="bg-transparent">
+              <p className="text-black font-semibold text-xs leading-tight  ">
+                2,54,300+
+              </p>
+              <p className="text-black text-xs leading-tight shadow-sm">
+                Our Worldwide Patients
+              </p>
+            </div>
+          </div>
         </div>
 
-        {/* Testimonials Carousel */}
-        <div className="relative flex justify-center items-center">
-          <button
-            onClick={prevSlide}
-            className="absolute left-0 bg-gray-200 hover:bg-gray-300 p-2 rounded-full shadow-md transition"
+        {/* Right Content */}
+        <div 
+          data-aos="fade-left"
+          data-aos-delay="300"
+          data-aos-duration="800"
+          className="w-full md:w-[55%] md:pl-10 mt-8 md:mt-0 relative"
+        >
+          {/* Heading */}
+          <h2 
+            data-aos="fade-up"
+            data-aos-delay="400"
+            className="text-[19px] sm:text-[19px] md:text-[30px] lg:text-[38px] xl:text-[30px] 2xl:text-[34px] font-bold text-[#1D3A70] mb-2"
           >
-            <ChevronLeft size={24} />
-          </button>
+            We Value the trust our patients <br /> place in us.
+          </h2>
 
-          <div className="w-full md:w-4/5 lg:w-3/4 flex flex-col md:flex-row gap-6 transition-all duration-500 ease-in-out">
-            {[0, 1, 2].map((offset) => {
-              const index = (currentIndex + offset) % testimonials.length;
-              const testimonial = testimonials[index];
-              return (
-                <div
-                  key={index}
-                  className="bg-[#f9fafb] rounded-xl border border-gray-200 p-6 md:p-8 flex flex-col justify-between hover:shadow-lg transition-all duration-300"
-                >
-                  <div className="mb-4 flex items-center gap-1">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <svg
-                        key={i}
-                        className="w-5 h-5 text-yellow-400"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                      >
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                      </svg>
-                    ))}
-                  </div>
-                  <p className="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
-                    “{testimonial.feedback}”
-                  </p>
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-900">
-                      {testimonial.name}
-                    </h3>
-                    <span className="text-sm text-gray-500">
-                      {testimonial.role}
-                    </span>
-                  </div>
-                </div>
-              );
-            })}
+          {/* Description */}
+          <p 
+            data-aos="fade-up"
+            data-aos-delay="500"
+            className="text-gray-600 mb-6 text-[14px] sm:text-[14px] md:text-[15px] lg:text-[16px] xl:text-[16px] 2xl:text-[22px]"
+          >
+            Every patient's experience matters to us. Hear from those who have
+            entrusted Clerisy Medical PC with their care and discover how we're
+            making a difference in their health journeys.
+          </p>
+
+          {/* Navigation Buttons */}
+          <div 
+            data-aos="fade-up"
+            data-aos-delay="600"
+            className="flex justify-end gap-6 mt-[25px] mb-6"
+          >
+            <button
+              onClick={handlePrev}
+              disabled={startIndex === 0}
+              className="bg-[#ADAFB2] p-3 rounded-full   disabled:opacity-50 hover:bg-gray-400 transition transform hover:scale-110 duration-300"
+            >
+              <ChevronLeft size={16} className="text-white" />
+            </button>
+            <button
+              onClick={handleNext}
+              disabled={startIndex + visibleCount >= testimonials.length}
+              className="bg-[#ADAFB2] p-3 rounded-full   disabled:opacity-50 hover:bg-gray-400 transition transform hover:scale-110 duration-300"
+            >
+              <ChevronRight size={16} className="text-white" />
+            </button>
           </div>
 
-          <button
-            onClick={nextSlide}
-            className="absolute right-0 bg-gray-200 hover:bg-gray-300 p-2 rounded-full shadow-md transition"
-          >
-            <ChevronRight size={24} />
-          </button>
+          {/* Testimonials Cards */}
+          <div className="flex gap-4 overflow-hidden md:overflow-visible">
+            {visibleTestimonials.map((t, index) => (
+              <div
+                key={index}
+                data-aos="fade-up"
+                data-aos-delay={700 + (index * 100)}
+                data-aos-duration="600"
+                className={`w-[90%] sm:min-w-[300px] sm:max-w-[240px] h-[230px] 2xl:max-w-[340px] 2xl:h-[290px] p-[25px] bg-blue-50 rounded-tl-[48px] rounded-tr-[12px] rounded-bl-[12px] rounded-br-[48px] shadow-sm flex-shrink-0 transform transition-all duration-500 hover:shadow-lg hover:-translate-y-2 ${
+                  index === 0 ? "xl:-ml-53 2xl--ml-53 sm:ml-0" : ""
+                }`}
+              >
+                <div className="flex items-center gap-3 mb-2">
+                  <img
+                    src={t.avatar}
+                    alt={t.name}
+                    className="w-12 h-12 rounded-full object-cover"
+                  />
+                  <div>
+                    <p className="font-semibold text-[#1D3A70] text-[17px] 2xl:text-[21px] mb-2">
+                      {t.name}
+                    </p>
+                    <p className="text-xs text-gray-500 text-[16px] 2xl:text-[19px]">
+                      {t.role}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Feedback */}
+                <p className="text-[14px] 2xl:text-[18px] text-gray-700 mb-2">
+                  "{t.feedback}"
+                </p>
+
+                {/* Rating */}
+                <p className="text-sm 2xl:text-[19px] mt-2 font-bold text-blue-500">
+                  {t.rating}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
-      {/* Background Glow */}
-      <div className="absolute top-0 left-0 w-32 h-32 bg-blue-50 rounded-full blur-3xl -z-10 -translate-x-1/4 -translate-y-1/4"></div>
-      <div className="absolute bottom-0 right-0 w-32 h-32 bg-blue-50 rounded-full blur-3xl -z-10 translate-x-1/4 translate-y-1/4"></div>
+      {/* Background Glow Effects */}
+      <div 
+        data-aos="fade"
+        data-aos-delay="800"
+        className="absolute top-0 left-0 w-30 h-30 bg-blue-50 rounded-full blur-3xl -z-10 -translate-x-1/4 -translate-y-1/4"
+      ></div>
+      <div 
+        data-aos="fade"
+        data-aos-delay="900"
+        className="absolute bottom-0 right-0 w-30 h-30 bg-blue-50 rounded-full blur-3xl -z-10 translate-x-1/4 translate-y-1/4"
+      ></div>
     </section>
   );
 };

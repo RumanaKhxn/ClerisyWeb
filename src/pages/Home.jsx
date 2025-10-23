@@ -4,6 +4,7 @@ import AboutClerisy from '../components/AboutClerisy';
 import ServicesSection from '../components/ServicesSection';
 import TestimonialsSection from '../components/TestimonialsSection';
 import ContactSection from '../components/ContactSection';
+import PatientPortalSection from '../components/PatientPortalSection';
 
 const Home = () => {
   return (
@@ -12,7 +13,9 @@ const Home = () => {
       <AboutClerisy />
       <ServicesSection />
       <TestimonialsSection />
+      <PatientPortalSection />
       <ContactSection />
+      
     </>
   );
 };

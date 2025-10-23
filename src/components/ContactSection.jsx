@@ -2,15 +2,19 @@ import React from "react";
 
 const ContactSection = () => {
   return (
-    <section className="bg-white py-16 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto">
-        {/* Main Container with Blue Background */}
-        <div className="bg-[#E6F3FF] rounded-2xl p-8 shadow-lg lg:grid lg:grid-cols-2 lg:gap-12 items-center">
-          
+    <section className="bg-white py-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
+      <div className="max-w-8xl mx-auto">
+        {/* Main Container with Blue Background - Animated */}
+        <div 
+          className="bg-[#E6F3FF] p-8  lg:grid lg:grid-cols-2 lg:gap-12 items-center transform transition-all duration-1000 ease-out translate-y-12 opacity-0 animate-containerSlideUp"
+          style={{
+            borderRadius: "100px 25px 100px 25px"
+          }}
+        >
           {/* Left Column: Info */}
           <div className="space-y-6">
-            <h2 className="text-4xl font-bold text-gray-900 sm:text-4xl">
-              We're here for you.
+            <h2 className="text-6xl text-[#385399] sm:text-5xl">
+              We're here <br /> <span className="text-[#ADAFB2]">for you.</span>
             </h2>
             <img src="./public/contact.png" alt="Contact illustration" />
           </div>
@@ -28,8 +32,8 @@ const ContactSection = () => {
                   </label>
                   <input
                     type="text"
-                    placeholder="Last Name"
-                    className="w-full px-4 py-3 border-b border-gray-300 focus:outline-none focus:border-blue-500 text-gray-700 placeholder-gray-500 bg-transparent"
+                    placeholder="First Name"
+                    className="w-full px-4 py-3 border-b border-gray-300 focus:outline-none focus:border-blue-500 text-gray-700 placeholder-gray-500 bg-transparent transition-colors duration-300"
                   />
                 </div>
 
@@ -41,7 +45,7 @@ const ContactSection = () => {
                   <input
                     type="tel"
                     placeholder="Phone"
-                    className="w-full px-4 py-3 border-b border-gray-300 focus:outline-none focus:border-blue-500 text-gray-700 placeholder-gray-500 bg-transparent"
+                    className="w-full px-4 py-3 border-b border-gray-300 focus:outline-none focus:border-blue-500 text-gray-700 placeholder-gray-500 bg-transparent transition-colors duration-300"
                   />
                 </div>
               </div>
@@ -55,8 +59,8 @@ const ContactSection = () => {
                   </label>
                   <input
                     type="text"
-                    placeholder="Last name"
-                    className="w-full px-4 py-3 border-b border-gray-300 focus:outline-none focus:border-blue-500 text-gray-700 placeholder-gray-500 bg-transparent"
+                    placeholder="Last Name"
+                    className="w-full px-4 py-3 border-b border-gray-300 focus:outline-none focus:border-blue-500 text-gray-700 placeholder-gray-500 bg-transparent transition-colors duration-300"
                   />
                 </div>
 
@@ -68,7 +72,7 @@ const ContactSection = () => {
                   <input
                     type="email"
                     placeholder="Email"
-                    className="w-full px-4 py-3 border-b border-gray-300 focus:outline-none focus:border-blue-500 text-gray-700 placeholder-gray-500 bg-transparent"
+                    className="w-full px-4 py-3 border-b border-gray-300 focus:outline-none focus:border-blue-500 text-gray-700 placeholder-gray-500 bg-transparent transition-colors duration-300"
                   />
                 </div>
               </div>
@@ -82,22 +86,39 @@ const ContactSection = () => {
               <textarea
                 placeholder="Tell us how we can help?"
                 rows={4}
-                className="w-full px-4 py-3 border-gray-300 focus:outline-none focus:border-blue-500 text-gray-700 placeholder-gray-500 bg-transparent resize-none"
+                className="w-full px-4 py-3 border-b border-gray-300 focus:outline-none focus:border-blue-500 text-gray-700 placeholder-gray-500 bg-transparent resize-none transition-colors duration-300"
               />
             </div>
 
             {/* Single Divider Line */}
-            <div className="h-px bg-gray-300 my-1"></div>
+            <div className="h-px bg-gray-300 my-1 mb-3"></div>
 
             {/* Send Button - Right Aligned */}
             <div className="flex justify-end">
-              <button className="bg-[#385399] hover:bg-[#2f467f] text-white font-semibold py-3 px-8 rounded-full transition duration-300 text-lg">
-                Send Message
+              <button className="bg-[#385399] hover:bg-[#2f467f] text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 text-lg transform hover:scale-105">
+                Submit
               </button>
             </div>
           </div>
         </div>
       </div>
+
+      {/* Add custom animation styles */}
+      <style jsx>{`
+        @keyframes containerSlideUp {
+          from {
+            transform: translateY(50px);
+            opacity: 0;
+          }
+          to {
+            transform: translateY(0);
+            opacity: 1;
+          }
+        }
+        .animate-containerSlideUp {
+          animation: containerSlideUp 1s ease-out forwards;
+        }
+      `}</style>
     </section>
   );
 };
