@@ -52,7 +52,7 @@ const Hero = () => {
       <div 
         className="md:hidden absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
         style={{
-          backgroundImage: "url('/hero-image.png')",
+          backgroundImage: "url('/hero-image.svg')",
         }}
       />
 

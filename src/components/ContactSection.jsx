@@ -86,7 +86,7 @@ const ContactSection = () => {
               <textarea
                 placeholder="Tell us how we can help?"
                 rows={4}
-                className="w-full px-4 py-3 border-b border-gray-300 focus:outline-none focus:border-blue-500 text-gray-700 placeholder-gray-500 bg-transparent resize-none transition-colors duration-300"
+                className="w-full px-4 py-3  border-gray-300 focus:outline-none focus:border-blue-500 text-gray-700 placeholder-gray-500 bg-transparent resize-none transition-colors duration-300"
               />
             </div>
 

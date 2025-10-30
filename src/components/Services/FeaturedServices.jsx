@@ -20,7 +20,7 @@ const FeaturedServices = () => {
   ];
 
   return (
-    <section className="relative bg-white py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-24 overflow-hidden">
+    <section className="relative bg-white py-10 sm:py-12 md:py-14 lg:py-16 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-24 overflow-hidden">
       <div className="max-w-6xl mx-auto">
         {/* Main Header */}
         <div className="text-center mb-12 md:mb-16 lg:mb-20">

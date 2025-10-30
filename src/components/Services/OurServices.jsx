@@ -1,6 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { Brain, Bone, Eye, Leaf, Dumbbell, Users } from "lucide-react";
 
 const OurServices = () => {
+  useEffect(() => {
+    const elements = document.querySelectorAll(".reveal-left");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("active");
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    elements.forEach((el) => observer.observe(el));
+  }, []);
+
   const services = {
     specialtyCare: {
       title: "Specialty Care",
@@ -8,17 +25,17 @@ const OurServices = () => {
         {
           name: "Neurology",
           description: "Diagnosis and treatment of neurological disorders.",
-          icon: "https://cdn-icons-png.flaticon.com/512/2920/2920277.png",
+          icon: <Brain className="w-6 h-6 text-gray-400" />,
         },
         {
           name: "Orthopedics",
           description: "Care for musculoskeletal conditions and injuries.",
-          icon: "https://cdn-icons-png.flaticon.com/512/3774/3774271.png",
+          icon: <Bone className="w-6 h-6 text-gray-400" />,
         },
         {
           name: "Ophthalmology",
           description: "Comprehensive eye exams and vision correction.",
-          icon: "https://cdn-icons-png.flaticon.com/512/2966/2966324.png",
+          icon: <Eye className="w-6 h-6 text-gray-400" />,
         },
       ],
     },
@@ -27,52 +44,59 @@ const OurServices = () => {
       items: [
         {
           name: "Nutrition Counseling",
-          description: "Personalized dietary plans and nutritional guidance.",
-          icon: "https://cdn-icons-png.flaticon.com/512/3075/3075977.png",
+          description:
+            "Personalized dietary plans and nutritional guidance.",
+          icon: <Leaf className="w-6 h-6 text-gray-400" />,
         },
         {
           name: "Fitness Programs",
           description: "Exercise programs tailored to your fitness level.",
-          icon: "https://cdn-icons-png.flaticon.com/512/1888/1888976.png",
+          icon: <Dumbbell className="w-6 h-6 text-gray-400" />,
         },
         {
           name: "Support Groups",
-          description: "Group sessions for emotional support and shared experiences.",
-          icon: "https://cdn-icons-png.flaticon.com/512/3774/3774294.png",
+          description:
+            "Group sessions for emotional support and shared experiences.",
+          icon: <Users className="w-6 h-6 text-gray-400" />,
         },
       ],
     },
   };
 
   return (
-    <section className="relative bg-white py-12 sm:py-16 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-24 overflow-hidden">
+    <section className="relative bg-white py-12 sm:py-16 md:py-20 px-6 md:px-12 xl:px-24 overflow-hidden">
       <div className="max-w-6xl mx-auto">
-        {/* Main Header */}
-        <div className="text-center mb-8 md:mb-12">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#191919] mb-4">
+        {/* Header */}
+        <div className="text-center mb-12 reveal-left">
+          <h1 className="text-3xl sm:text-4xl font-bold text-[#1E3A8A] mb-4">
             Our Services
           </h1>
-          <p className="text-lg text-[#4A739C] leading-relaxed max-w-3xl mx-auto">
-            Explore the comprehensive range of healthcare services we offer, designed to meet your individual needs and promote overall well-being.
+          <p className="text-lg text-[#4A739C] max-w-2xl mx-auto leading-relaxed">
+            Explore the comprehensive range of healthcare services we offer,
+            designed to meet your individual needs and promote overall well-being.
           </p>
         </div>
 
         {/* Specialty Care */}
-        <div className="mb-12">
-          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#385399] mb-6">
+        <div className="mb-16 reveal-left">
+          <h2 className="text-xl sm:text-2xl font-bold text-[#385399] mb-6">
             {services.specialtyCare.title}
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {services.specialtyCare.items.map((service, index) => (
               <div
                 key={index}
-                className="bg-white rounded-xl p-4 border border-gray-200 hover:shadow-md transition-all duration-300 flex items-start gap-3"
+                className="border border-gray-200 bg-white relative transition-transform duration-500 hover:scale-[1.02]"
+                style={{
+                  borderRadius: "28px 7px 28px 7px",
+                  padding: "16px",
+                }}
               >
-                <div className="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <img src={service.icon} alt={service.name} className="w-5 h-5" loading="lazy" />
+                <div className="absolute top-4 left-4 rounded-full p-2">
+                  {service.icon}
                 </div>
-                <div>
-                  <h3 className="text-lg sm:text-xl font-bold text-[#191919] mb-2">
+                <div className="pt-12">
+                  <h3 className="font-semibold text-gray-900 mb-1 text-lg">
                     {service.name}
                   </h3>
                   <p className="text-gray-600 text-sm leading-relaxed">
@@ -85,21 +109,25 @@ const OurServices = () => {
         </div>
 
         {/* Wellness & Prevention */}
-        <div>
-          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#385399] mb-6">
+        <div className="reveal-left">
+          <h2 className="text-xl sm:text-2xl font-bold text-[#385399] mb-6">
             {services.wellness.title}
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {services.wellness.items.map((service, index) => (
               <div
                 key={index}
-                className="bg-white rounded-xl p-4 border border-gray-200 hover:shadow-md transition-all duration-300 flex items-start gap-3"
+                className="border border-gray-200 bg-white relative transition-transform duration-500 hover:scale-[1.02]"
+                style={{
+                  borderRadius: "28px 7px 28px 7px",
+                  padding: "16px",
+                }}
               >
-                <div className="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <img src={service.icon} alt={service.name} className="w-5 h-5" loading="lazy" />
+                <div className="absolute top-4 left-4 rounded-full p-2">
+                  {service.icon}
                 </div>
-                <div>
-                  <h3 className="text-lg sm:text-xl font-bold text-[#191919] mb-2">
+                <div className="pt-12">
+                  <h3 className="font-semibold text-gray-900 mb-1 text-lg">
                     {service.name}
                   </h3>
                   <p className="text-gray-600 text-sm leading-relaxed">
@@ -111,6 +139,19 @@ const OurServices = () => {
           </div>
         </div>
       </div>
+
+      {/* Animation Styles */}
+      <style jsx>{`
+        .reveal-left {
+          opacity: 0;
+          transform: translateX(-80px);
+          transition: all 1.2s ease-out;
+        }
+        .reveal-left.active {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      `}</style>
     </section>
   );
 };

@@ -3,20 +3,19 @@ import React from "react";
 const Footer = () => {
   return (
     <footer 
-      className="relative bg-[#385399] text-white overflow-hidden mx-auto transform transition-all duration-1000 ease-out translate-y-12 opacity-0 animate-footerSlideUp "
+      className="relative bg-[#385399] text-white overflow-hidden mx-auto transform transition-all duration-1000 ease-out translate-y-12 opacity-0 animate-footerSlideUp mb-5 "
       style={{
-        width: "1480px",
-        opacity: 1,
-        padding: "30px 20px 30px 20px",
-        gap: "30px",
-        borderTopLeftRadius: "100px",
-        borderTopRightRadius: "25px", 
-        borderBottomRightRadius: "100px",
-        borderBottomLeftRadius: "25px",
-        display: "flex",
-        flexDirection: "column",
-        marginBottom: "18px"
-      }}
+    width: "1480px",
+    padding: "30px 20px",
+    gap: "30px",
+    borderTopLeftRadius: "100px",
+    borderTopRightRadius: "25px", 
+    borderBottomRightRadius: "100px",
+    borderBottomLeftRadius: "25px",
+    display: "flex",
+    flexDirection: "column",
+    marginBottom:"84px",
+  }}
     >
       {/* 🔹 Contact Info Row - Fixed Center Alignment */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 text-center justify-center items-center mb-6 w-full">
