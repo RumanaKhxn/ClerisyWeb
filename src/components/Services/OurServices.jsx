@@ -64,11 +64,11 @@ const OurServices = () => {
   };
 
   return (
-    <section className="relative bg-white py-12 sm:py-16 md:py-20 px-6 md:px-12 xl:px-24 overflow-hidden">
+    <section className="relative bg-white py-8 sm:py-10 md:py-14 px-6 md:px-12 xl:px-24 overflow-hidden">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-12 reveal-left">
-          <h1 className="text-3xl sm:text-4xl font-bold text-[#1E3A8A] mb-4">
+        <div className="text-center mb-10 reveal-left">
+          <h1 className="text-3xl sm:text-4xl font-bold text-[#1E3A8A] mb-3">
             Our Services
           </h1>
           <p className="text-lg text-[#4A739C] max-w-2xl mx-auto leading-relaxed">
@@ -78,8 +78,8 @@ const OurServices = () => {
         </div>
 
         {/* Specialty Care */}
-        <div className="mb-16 reveal-left">
-          <h2 className="text-xl sm:text-2xl font-bold text-[#385399] mb-6">
+        <div className="mb-12 reveal-left">
+          <h2 className="text-xl sm:text-2xl font-bold text-[#385399] mb-5">
             {services.specialtyCare.title}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -110,7 +110,7 @@ const OurServices = () => {
 
         {/* Wellness & Prevention */}
         <div className="reveal-left">
-          <h2 className="text-xl sm:text-2xl font-bold text-[#385399] mb-6">
+          <h2 className="text-xl sm:text-2xl font-bold text-[#385399] mb-5">
             {services.wellness.title}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

@@ -10,7 +10,7 @@ const HeaderNavigation = () => {
     { name: "Home", path: "/" },
     { name: "About", path: "/about" },
     { name: "Services", path: "/services" },
-    { name: "Contact", path: "/contact" }
+    { name: "Contact", path: "/contact" },
   ];
 
   const handleNavClick = (path) => {
@@ -59,14 +59,14 @@ const HeaderNavigation = () => {
 
         {/* Desktop Action Buttons */}
         <div className="hidden lg:flex items-center gap-2 xl:gap-3">
-          <button 
-            onClick={() => handleButtonClick("appointment")}
-            className="bg-[#385399] text-white px-4 xl:px-6 py-2 rounded-full hover:bg-[#2f467f] transition duration-300 font-medium text-xs xl:text-sm shadow-sm whitespace-nowrap"
+          <Link
+            to="/appointment"
+            className="w-full inline-block text-center bg-[#385399] text-white px-4 py-2 rounded-full hover:bg-[#2f467f] transition duration-300 font-medium text-sm shadow-sm"
           >
             Book Appointment
-          </button>
+          </Link>
 
-          <button 
+          <button
             onClick={() => handleButtonClick("portal")}
             className="border border-[#ADAFB2] text-white bg-[#ADAFB2] backdrop-blur-sm px-4 xl:px-6 py-2 rounded-full hover:bg-[#ADAFB2] hover:text-white transition duration-300 font-medium text-xs xl:text-sm whitespace-nowrap"
           >
@@ -120,13 +120,14 @@ const HeaderNavigation = () => {
 
             {/* Mobile Action Buttons */}
             <div className="pt-2 space-y-3">
-              <button 
-                onClick={() => handleButtonClick("appointment")}
-                className="w-full bg-[#385399] text-white px-4 py-3 rounded-full hover:bg-[#2f467f] transition duration-300 font-medium text-sm shadow-sm"
+              <Link
+                to="/appointment"
+                className="w-full inline-block text-center bg-[#385399] text-white px-4 py-2 rounded-full hover:bg-[#2f467f] transition duration-300 font-medium text-sm shadow-sm"
               >
                 Book Appointment
-              </button>
-              <button 
+              </Link>
+
+              <button
                 onClick={() => handleButtonClick("portal")}
                 className="w-full border border-[#ADAFB2] text-white bg-[#ADAFB2] px-4 py-3 rounded-full hover:bg-[#ADAFB2] hover:text-white transition duration-300 font-medium text-sm"
               >

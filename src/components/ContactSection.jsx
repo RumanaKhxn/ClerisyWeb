@@ -12,7 +12,7 @@ const ContactSection = () => {
           }}
         >
           {/* Left Column: Info */}
-          <div className="space-y-6">
+          <div className="space-y-6 pl-4">
             <h2 className="text-6xl text-[#385399] sm:text-5xl">
               We're here <br /> <span className="text-[#ADAFB2]">for you.</span>
             </h2>
@@ -20,7 +20,7 @@ const ContactSection = () => {
           </div>
 
           {/* Right Column: Form */}
-          <div className="space-y-8">
+          <div className="space-y-8 pr-5">
             {/* Two Column Form Layout */}
             <div className="grid md:grid-cols-2 gap-8">
               {/* Left Column */}
@@ -85,16 +85,15 @@ const ContactSection = () => {
               </label>
               <textarea
                 placeholder="Tell us how we can help?"
-                rows={4}
-                className="w-full px-4 py-3  border-gray-300 focus:outline-none focus:border-blue-500 text-gray-700 placeholder-gray-500 bg-transparent resize-none transition-colors duration-300"
+                rows={1}
+                className="w-full px-4 py-3 border-b border-gray-300 focus:outline-none focus:border-blue-500 text-gray-700 placeholder-gray-500 bg-transparent resize-none transition-colors duration-300"
               />
             </div>
 
-            {/* Single Divider Line */}
-            <div className="h-px bg-gray-300 my-1 mb-3"></div>
+         
 
             {/* Send Button - Right Aligned */}
-            <div className="flex justify-end">
+            <div className="flex justify-end pr-10">
               <button className="bg-[#385399] hover:bg-[#2f467f] text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 text-lg transform hover:scale-105">
                 Submit
               </button>

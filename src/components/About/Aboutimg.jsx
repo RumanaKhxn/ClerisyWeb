@@ -1,87 +1,146 @@
-// src/pages/About.jsx
-import React from 'react';
+import React from "react";
+import { motion } from "framer-motion";
+
+const AnimatedButton = ({ text, link, bgColor = "#385399" }) => {
+  return (
+    <motion.button
+      onClick={() => (window.location.href = link)}
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.97 }}
+      className={`relative px-9 py-3  
+        ${
+          text === "Contact Us"
+            ? "w-[120px] sm:w-[110px]"
+            : "w-[120px] sm:w-[120px]"
+        } 
+        h-[38px] sm:h-[38px]
+        rounded-full text-white group overflow-hidden flex items-center justify-center whitespace-nowrap text-[13px] sm:text-[14px]`}
+      style={{ backgroundColor: bgColor }}
+    >
+      {/* Normal State */}
+      <div className="flex items-center justify-between absolute inset-0 transition-transform duration-500 transform translate-x-0 group-hover:-translate-x-full">
+        <span className="ml-2">{text}</span>
+        <div className="w-[29px] h-[29px] bg-white rounded-full flex items-center justify-center">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke={bgColor}
+            strokeWidth="2.3"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="w-[15px] h-[15px]"
+          >
+            <path d="M7 17L17 7M7 7h10v10" />
+          </svg>
+        </div>
+      </div>
+
+      {/* Hover State */}
+      <div className="flex items-center justify-between absolute inset-0 transition-transform duration-500 transform translate-x-full group-hover:translate-x-0">
+        <div className="w-[28px] h-[28px] bg-white rounded-full flex items-center justify-center">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke={bgColor}
+            strokeWidth="2.3"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="w-[12px] h-[12px]"
+          >
+            <path d="M7 17L17 7M7 7h10v10" />
+          </svg>
+        </div>
+        <span className="mr-2">{text}</span>
+      </div>
+    </motion.button>
+  );
+};
 
 const About = () => {
+  const fadeUp = {
+    hidden: { opacity: 0, y: 30 },
+    visible: (delay = 0) => ({
+      opacity: 1,
+      y: 0,
+      transition: { delay, duration: 0.6, ease: "easeOut" },
+    }),
+  };
+
   return (
-    <div className="min-h-screen bg-white">
-      {/* Main Content Section */}
-      <main className="max-w-4xl mx-auto px-6 py-20 md:py-28">
+    <div className="min-h-[77vh] bg-white flex items-center px-4 sm:px-6">
+      <main className="max-w-4xl mx-auto py-16 md:py-20 w-full">
         {/* Heading Section */}
-        <div className="text-center mb-15">
-          <h2 className="text-2xl md:text-2xl text-[#385399] mb-8 tracking-tight animate-fade-in-up">
+        <div className="text-center mb-10">
+          <motion.h2
+            variants={fadeUp}
+            initial="hidden"
+            animate="visible"
+            custom={0.1}
+            className="text-2xl md:text-2xl text-[#385399] mb-4 tracking-tight"
+          >
             About Us
-          </h2>
-          <h2 className="text-4xl md:text-5xl text-[#385399] mb-5 tracking-tight animate-fade-in-up animation-delay-200">
-            Experience Compassionate Care 
-          </h2>
-          <h1 className="text-4xl md:text-5xl text-[#385399] leading-relaxed animate-fade-in-up animation-delay-400">
-            Rooted in Our Mission and Values at{' '}
-            <span className="text-4xl md:text-5xl font-semibold text-gray-400">Clerisy Medical PC</span>
-          </h1>
+          </motion.h2>
+
+          <motion.h2
+            variants={fadeUp}
+            initial="hidden"
+            animate="visible"
+            custom={0.3}
+            className="text-4xl md:text-4xl text-[#385399] mb-3 tracking-tight"
+          >
+            Experience Compassionate Care
+          </motion.h2>
+
+          <motion.h1
+            variants={fadeUp}
+            initial="hidden"
+            animate="visible"
+            custom={0.5}
+            className="text-4xl md:text-4xl text-[#385399] leading-relaxed mt-2"
+          >
+            Rooted in Our Mission and Values at
+          </motion.h1>
+
+          <motion.h1
+            variants={fadeUp}
+            initial="hidden"
+            animate="visible"
+            custom={0.6}
+            className="text-4xl md:text-4xl font-semibold text-gray-400 mt-1"
+          >
+            Clerisy Medical PC
+          </motion.h1>
         </div>
 
-        {/* Description Section */}
-        <div className="max-w-3xl mx-auto mb-10">
-          <p className="text-lg md:text-xl text-black leading-relaxed text-center animate-fade-in-up animation-delay-600">
-            we are dedicated to compassionate, patient-first care. Our values guide every interaction, ensuring you feel{' '}
-            <span className="text-black">heard, respected, and supported</span>{' '}
+        {/* Description */}
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          animate="visible"
+          custom={0.8}
+          className="max-w-3xl mx-auto mb-5 md:mb-6"
+        >
+          <p className="text-lg md:text-xl text-black leading-relaxed text-center">
+            We are dedicated to compassionate, patient-first care. Our values
+            guide every action, ensuring you feel heard, respected, and supported
             on your health journey.
           </p>
-        </div>
+        </motion.div>
 
-        {/* Buttons container - CENTERED */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          {/* Explore Services button with upper-right arrow */}
-          <button className="bg-[#ADAFB2] hover:bg-[#ADAFB2] text-white font-medium py-2 px-7 rounded-full transition-colors duration-200 shadow-md flex items-center gap-2 group">
-           Contact Us
-            <div className="w-8 h-8 bg-white bg-opacity-20 rounded-full flex items-center justify-center group-hover:bg-opacity-30 transition-all">
-              <svg className="w-4 h-4 text-[#ADAFB2] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17l9.2-9.2M17 17V7H7" />
-              </svg>
-            </div>
-          </button>
-          
-          {/* Appointment button with upper-right arrow */}
-          <button className="bg-[#385399] hover:bg-[#385399] text-white font-medium py-2 px-7 rounded-full border border-[#385399] transition-colors duration-200 shadow-sm flex items-center gap-2 group">
-            Appointment
-            <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center transition-all">
-              <svg className="w-4 h-4 text-[#385399] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17l9.2-9.2M17 17V7H7" />
-              </svg>
-            </div>
-          </button>
-        </div>
+        {/* Buttons */}
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          animate="visible"
+          custom={1.0}
+          className="flex flex-wrap justify-center gap-3 mt-6"
+        >
+          <AnimatedButton text="Contact Us" link="/contact" bgColor="#ADAFB2" />
+          <AnimatedButton text="Appointment" link="/appointment" bgColor="#385399" />
+        </motion.div>
       </main>
-
-      {/* Add these styles to your global CSS or use a CSS-in-JS solution */}
-      <style jsx>{`
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        .animate-fade-in-up {
-          animation: fadeInUp 0.8s ease-out forwards;
-          opacity: 0;
-        }
-        .animation-delay-200 {
-          animation-delay: 0.2s;
-        }
-        .animation-delay-400 {
-          animation-delay: 0.4s;
-        }
-        .animation-delay-600 {
-          animation-delay: 0.6s;
-        }
-        .animation-delay-800 {
-          animation-delay: 0.8s;
-        }
-      `}</style>
     </div>
   );
 };

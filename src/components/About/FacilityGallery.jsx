@@ -14,7 +14,7 @@ const FacilityGallery = () => {
     <section className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-6">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-10">
           <h1 className="text-4xl md:text-5xl font-bold text-[#385399]">
             Our State-of-the-Art Facility
           </h1>
@@ -23,7 +23,7 @@ const FacilityGallery = () => {
         {/* Simple Image Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {facilityImages.map((src, index) => (
-            <div key={index} className="rounded-2xl overflow-hidden shadow-lg">
+            <div key={index} className="rounded-2xl overflow-hidden  ">
               <img
                 src={src}
                 alt={`Clerisy Medical Facility ${index + 1}`}

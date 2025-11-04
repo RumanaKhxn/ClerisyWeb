@@ -2,7 +2,7 @@ import React from 'react';
 
 const CoreValues = () => {
   return (
-    <section className="py-16 bg-[#385399]">
+    <section className="py-10 bg-[#385399]">
       <div className="max-w-6xl mx-auto px-6">
         {/* Main Heading */}
         <div className="text-center mb-16">

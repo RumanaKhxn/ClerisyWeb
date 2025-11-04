@@ -53,14 +53,14 @@ const Treatment = () => {
   return (
     <section 
       id="services-section"
-      className="relative bg-white py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-8 lg:px-12 overflow-hidden"
+      className="relative  py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-8 lg:px-12 overflow-hidden mb-3"
     >
       <div className="max-w-5xl mx-auto">
         {/* Header Section */}
         <div 
           data-aos="fade-down"
           data-aos-delay="100"
-          className="text-center mb-10 md:mb-14"
+          className="text-center mb-7 md:mb-14"
         >
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#385399] mb-4">
             Treatments & Services
@@ -75,7 +75,7 @@ const Treatment = () => {
               data-aos="fade-up"
               data-aos-delay={index * 100 + 200}
               data-aos-duration="800"
-              className="bg-[#E6F3FF] shadow-lg hover:bg-[#385399] transition-all duration-300 transform hover:-translate-y-1 border-2 border-transparent hover:border-[#385399] group cursor-pointer relative"
+              className="bg-[#E6F3FF]  hover:bg-[#385399] transition-all duration-300 transform hover:-translate-y-1 border-2 border-transparent hover:border-[#385399] group cursor-pointer relative"
               style={{
                 borderRadius: "60px 15px 60px 15px",
               }}
